@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="consulta_viacep.js" type="module" defer></script> 
+    => defer:
+         O atributo defer diz ao navegador para executar o script apenas quando a análise do HTML estiver finalizada. 
+    -->
+    <title>Cadastro Alunos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdLMz-6mKCUOpwKGomXMkFN5pu1NdQj1Xcbg&usqp=CAU">
+</head>
+<body>
+    <header>
+        <img src="data:image/png;base64,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" alt="">
+    </header>
+
+    <main class="container">
+        <h1 class="title">Tudo sobre Rick And Morty  </h1>
+        <div class="row">
+            <div class="inputbox">
+                <input type="text" id="nome" required>
+                <label for="nome">Nome</label>
+            </div>
+            <div class="inputbox">
+                <input type="text" id="email" required>
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="inputbox">
+                <input type="text" id="cep" required>
+                <label for="cep">CEP</label>
+            </div>
+            <div class="inputbox">
+                <input type="text" id="endereco" required>
+                <label for="endereco">Endereço</label>
+            </div>
+            <div class="inputbox">
+                <input type="text" id="numero" required>
+                <label for="numero">Número</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="inputbox">
+                <input type="text" id="bairro" required>
+                <label for="bairro">Bairro</label>
+            </div>
+            <div class="inputbox">
+                <input type="text" id="cidade" required>
+                <label for="cidade">Cidade</label>
+            </div>
+            <div class="inputbox">
+                <input type="text" id="estado" required>
+                <label for="estado">Estado</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="inputbox">
+                <input type="text" id="complemento" required>
+                <label for="complemento">Complemento</label>
+            </div>
+            <div class="inputbox">
+                <input type="text" id="ddd" required>
+                <label for="ddd">DDD</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="inputbox">
+                <input type="text" id="ibge" required>
+                <label for="ibge">IBGE</label>
+            </div>
+            <div class="inputbox">
+                <input type="text" id="siafi" required>
+                <label for="siafi">Siafi</label>
+            </div>
+        </div>
+        <div class="row">
+            <button>Salvar</button>
+        </div>
+    </main>
+
+    <footer>
+        Thiago &#169 2023
+    </footer>
+
+    <script src="consulta_viacep.js"></script>
+</body>
+</html>
